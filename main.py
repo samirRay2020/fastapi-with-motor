@@ -11,7 +11,10 @@ from db import(
     delete_one_todo
     )
 
-
+@app.get("/")
+def main_route():
+    return {"Succesfully working":"200"}
+    
 #for all tasks
 @app.get("/fetch_all")
 async def fetch_all_tasks():
@@ -20,7 +23,7 @@ async def fetch_all_tasks():
         return res
     raise HTTPException(400, "No todo found")   
 
-@app.delete("/detele_all")
+@app.delete("/delete_all")
 async def delete_all_tasks():
     res = await delete_all_todos()
     if res:
